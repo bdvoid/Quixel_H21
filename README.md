@@ -30,7 +30,7 @@ Create or modify the package JSON file:
 ### 3. Install Modified Files
 
 **Clone this repository**
-Clone this folder into the Quixel Bridge plugin folder.
+into the Quixel Bridge plugin folder.
 
 ```
 git clone https://github.com/bdvoid/Quixel_H21.git
