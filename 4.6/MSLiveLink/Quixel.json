@@ -1,0 +1,8 @@
+{
+    "env": [
+        {
+            "HOUDINI_PATH": "D:/ASSET_LIBRARY/Quixel/support/plugins/houdini/4.6/MSLiveLink;&"
+        }
+    ],
+    "enable": true
+}
