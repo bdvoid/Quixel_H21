@@ -1,5 +1,6 @@
 
 from ..AssetImporters.ImportSurface import ImportSurface
+from .Compatibility import set_first_available_parm
 import hou
 import os
 
@@ -136,7 +137,11 @@ def usdVariantSetup(importedAssets,assetData,importOptions, importParams):
     if importOptions["UI"]["USDOptions"]["USDMaterial"] == "Arnold" :
         renderSettings = variantSet.createOutputNode("rendergeometrysettings")
         renderSettings.parm("arnolddisp_height_control")#.set("set")
-        renderSettings.parm("xn__primvarsarnolddisp_height_uhbg").set(0.008)
+        set_first_available_parm(
+            renderSettings,
+            ["xn__primvarsarnolddisp_height_uhbg", "primvarsarnolddisp_height", "arnolddisp_height"],
+            0.008,
+        )
         variantSet = renderSettings
     
 ##########################################

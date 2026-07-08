@@ -11,7 +11,7 @@ import hou
 
 from .OptionsUI import UIOptions
 from .USDUI import USDOptions
-from .SocketListener import QLiveLinkMonitor
+from .InitializePlugin import initializePlugin
 from .MSImporter import MSImporter
 from .Utilities.AssetData import *
 from .Utilities.SettingsManager import SettingsManager
@@ -120,11 +120,6 @@ class MSMainWindow(QMainWindow):
 
 
 def initializeWindow():
+    initializePlugin(start_ui=False)
     mWindow = MSMainWindow.getInstance()
     mWindow.show()
-
-    # LiveLink socket listener start
-    if len(QLiveLinkMonitor.Instance) == 0:
-        bridge_monitor = QLiveLinkMonitor()
-        bridge_monitor.Bridge_Call.connect(MSImporter.getInstance().importController)
-        bridge_monitor.start()

@@ -36,8 +36,11 @@ class MSAnalytics:
         return data
 
     def sendAnalytics (self):
-        self.sendToMetabase()
-        self.sendToBridgeLog()        
+        try:
+            self.sendToMetabase()
+            self.sendToBridgeLog()
+        except Exception:
+            pass
         
     def sendToMetabase (self):
         url ="http://localhost:" + self.port+ "/analytics/"

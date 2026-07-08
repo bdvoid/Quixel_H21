@@ -164,6 +164,9 @@ class UIOptions(QWidget):
         registeredRenderers = self.matCreator.materialMap.keys()
 
         for renderer in registeredRenderers:
+            if renderer == "Karma":
+                rendererList.append(renderer)
+
             if renderer == "Mantra":
                 rendererList.append(renderer)
 

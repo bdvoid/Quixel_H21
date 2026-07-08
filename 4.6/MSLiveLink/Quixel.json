@@ -1,7 +1,16 @@
 {
     "env": [
         {
-            "HOUDINI_PATH": "D:/ASSET_LIBRARY/Quixel/support/plugins/houdini/4.6/MSLiveLink;&"
+            "MSLIVELINK_ROOT": "__REPLACE_WITH_MSLIVELINK_ABSOLUTE_PATH__"
+        },
+        {
+            "HOUDINI_PATH": "$MSLIVELINK_ROOT;&"
+        },
+        {
+            "MS_HOUDINI_PATH": "$HOUDINI_USER_PREF_DIR/ms_quixel"
+        },
+        {
+            "MS_HOUDINI_BRIDGE_QUEUE_DIR": "$HOUDINI_TEMP_DIR/ms_houdini_bridge"
         }
     ],
     "enable": true

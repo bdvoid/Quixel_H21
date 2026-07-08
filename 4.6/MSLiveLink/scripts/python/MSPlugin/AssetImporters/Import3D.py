@@ -3,6 +3,7 @@
 
 from ..Utilities.SettingsManager import SettingsManager
 from ..Utilities.SingletonBase import Singleton
+from ..Utilities.Compatibility import set_first_available_parm
 from .ImportSurface import ImportSurface
 from ..Utilities.MegascansScatter import MegascansScatter
 from ..Utilities.USDVariant import *
@@ -100,7 +101,11 @@ class ImportUSD(with_metaclass(Singleton)):
         if importOptions["UI"]["USDOptions"]["USDMaterial"] == "Arnold" :
             renderSettings = variantSet.createOutputNode("rendergeometrysettings")
             renderSettings.parm("arnolddisp_height_control")#.set("set")
-            renderSettings.parm("xn__primvarsarnolddisp_height_uhbg").set(0.008)
+            set_first_available_parm(
+                renderSettings,
+                ["xn__primvarsarnolddisp_height_uhbg", "primvarsarnolddisp_height", "arnolddisp_height"],
+                0.008,
+            )
             variantSet = renderSettings
 
         ##########################################
@@ -331,10 +336,14 @@ class ImportUSD(with_metaclass(Singleton)):
         materialReference.setInput(1, matConfigNode)
 
         if importOptions["UI"]["USDOptions"]["USDMaterial"] == "Arnold" :
-                renderSettings = assignMaterial.createOutputNode("rendergeometrysettings")
-                renderSettings.parm("arnolddisp_height_control")#.set("set")
-                renderSettings.parm("xn__primvarsarnolddisp_height_uhbg").set(0.008)
-                assignMaterial = renderSettings
+            renderSettings = assignMaterial.createOutputNode("rendergeometrysettings")
+            renderSettings.parm("arnolddisp_height_control")#.set("set")
+            set_first_available_parm(
+                renderSettings,
+                ["xn__primvarsarnolddisp_height_uhbg", "primvarsarnolddisp_height", "arnolddisp_height"],
+                0.008,
+            )
+            assignMaterial = renderSettings
 
 
         outputNode = assignMaterial.createOutputNode("null", importParams["assetName"])
@@ -714,4 +723,3 @@ class Import3DAsset(with_metaclass(Singleton)):
         pass
 
     
-

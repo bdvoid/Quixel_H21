@@ -1,6 +1,6 @@
-# Quixel Megascans Plugin for Houdini 21
+# Quixel Megascans Plugin + Local Bridge for Houdini 21
 
-Modified Megascans LiveLink plugin for SideFX Houdini 21, providing enhanced USD/Solaris workflow support with MaterialX and improved renderer compatibility.
+Modified Megascans LiveLink plugin for SideFX Houdini 21, providing enhanced USD/Solaris workflow support with MaterialX, improved renderer compatibility, and a queue-based local Houdini bridge.
 
 ## Overview
 
@@ -21,11 +21,7 @@ This is a modified version of the official Quixel Megascans Houdini plugin (v4.6
 
 ### 2. Configure Houdini Package
 
-Create or modify the package JSON file:
-
-**Location**: `Documents/houdini21.0/packages/Quixel.json`
-
-**Important**: Update the path to match your installation directory.
+Use the package template in [Quixel.json](D:/HOU_TOOLS/Quixel_H21/4.6/MSLiveLink/Quixel.json) and set `MSLIVELINK_ROOT` to your local install path.
 
 ### 3. Install Modified Files
 
@@ -56,3 +52,4 @@ Feel free to submit issues and enhancement requests!
 - Improved Component Builder integration
 - Updated Redshift to Standard Shader
 - Viewport material preview improvements
+- Queue-based local Houdini bridge with startup auto-registration
